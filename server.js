@@ -2,6 +2,8 @@ const PORT = 8000;
 import express from "express";
 import cors from "cors";
 
+import Anthropic from "@anthropic-ai/sdk";
+
 const app = express();
 app.use(express.json());
 app.use(express.json({ limit: "10mb", extended: true }));
@@ -18,11 +20,10 @@ app.use(function (req, res, next) {
 });
 
 app.use(cors());
-const API_KEY2 = "tune-de592e91-eb27-422e-a502-9fe21b329e471709284355";
-const API_KEY = "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";
-const API_KEY3 = "tune-cf938e0a-fa05-4de6-9255-9431d21056e91709285403";
-const API_KEY4 = "tune-4c4549ed-b198-4556-bb82-850cd6b715bb1709380750";
-const API_KEY5 = "f99eD2qtXQWB15ZhWi4g2NZy59jCf3TX";
+
+const anthropic = new Anthropic({
+  apiKey: process.env.CLAUDE_API_KEY,
+});
 
 // add your own api keys
 
@@ -147,6 +148,19 @@ app.post("/completions", async (req, res) => {
     const data = await response.json();
     res.send(data);
   }
+  if (req.body.service === "Claude") {
+    const message = await anthropic.messages.create({
+      max_tokens: 1024,
+      messages: [{ role: "user", content: req.body.message }],
+      model: "claude-3-opus-20240229",
+    });
+
+    res.status(200).json({
+      success: true,
+      summary: message.content[0].text,
+    });
+  }
+
   if (req.body.service === "openhermes-2-5-m7b-4k") {
     const options = {
       method: "POST",
@@ -266,53 +280,53 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Listening on Port ${PORT}`);
 });
-const {
-  GoogleGenerativeAI,
-  HarmCategory,
-  HarmBlockThreshold,
-} = require("@google/generative-ai");
+// const {
+//   GoogleGenerativeAI,
+//   HarmCategory,
+//   HarmBlockThreshold,
+// } = require("@google/generative-ai");
 
-const MODEL_NAME = "gemini-1.0-pro";
+// const MODEL_NAME = "gemini-1.0-pro";
 
-async function runChat() {
-  const genAI = new GoogleGenerativeAI(API_KEY);
-  const model = genAI.getGenerativeModel({ model: MODEL_NAME });
+// async function runChat() {
+//   const genAI = new GoogleGenerativeAI(API_KEY);
+//   const model = genAI.getGenerativeModel({ model: MODEL_NAME });
 
-  const generationConfig = {
-    temperature: 0.9,
-    topK: 1,
-    topP: 1,
-    maxOutputTokens: 2048,
-  };
+//   const generationConfig = {
+//     temperature: 0.9,
+//     topK: 1,
+//     topP: 1,
+//     maxOutputTokens: 2048,
+//   };
 
-  const safetySettings = [
-    {
-      category: HarmCategory.HARM_CATEGORY_HARASSMENT,
-      threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
-    },
-    {
-      category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-      threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
-    },
-    {
-      category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
-      threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
-    },
-    {
-      category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
-      threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
-    },
-  ];
+//   const safetySettings = [
+//     {
+//       category: HarmCategory.HARM_CATEGORY_HARASSMENT,
+//       threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+//     },
+//     {
+//       category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+//       threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+//     },
+//     {
+//       category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
+//       threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+//     },
+//     {
+//       category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
+//       threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+//     },
+//   ];
 
-  const chat = model.startChat({
-    generationConfig,
-    safetySettings,
-    history: [],
-  });
+//   const chat = model.startChat({
+//     generationConfig,
+//     safetySettings,
+//     history: [],
+//   });
 
-  const result = await chat.sendMessage("YOUR_USER_INPUT");
-  const response = result.response;
-  console.log(response.text());
-}
+//   const result = await chat.sendMessage("YOUR_USER_INPUT");
+//   const response = result.response;
+//   console.log(response.text());
+// }
 
-runChat();
+// runChat();
