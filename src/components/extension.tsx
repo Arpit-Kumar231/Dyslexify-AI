@@ -23,7 +23,7 @@ const Extension = () => {
   const [text, setText] = useState("");
   const [Chats, setChats] = useState([]);
   const [currentTitle, setCurrentTitle] = useState([]);
-  const [service, setService] = useState("Meta-Llama-3");
+  const [service, setService] = useState("Mistral");
   const { speak, cancel, voices } = useSpeechSynthesis();
   const [Image, setImage] = useState("");
   const [Loading, setLoading] = useState(false);
@@ -114,7 +114,7 @@ const Extension = () => {
         try {
           setLoading(true);
           const response = await fetch(
-            "http://localhost:8000/completions",
+            `http://localhost:8000/${service}`,
             options
           );
 
@@ -133,7 +133,7 @@ const Extension = () => {
         try {
           setLoading(true);
           const response = await fetch(
-            "http://localhost:8000/completions",
+            `http://localhost:8000/${service}`,
             options
           );
 
@@ -151,7 +151,7 @@ const Extension = () => {
         setLoading(true);
         try {
           const response = await fetch(
-            "http://localhost:8000/completions",
+            `http://localhost:8000/${service}`,
             options
           );
           const data = await response.json();
