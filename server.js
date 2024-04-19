@@ -2,8 +2,6 @@ const PORT = 8000;
 import express from "express";
 import cors from "cors";
 
-import Anthropic from "@anthropic-ai/sdk";
-
 const app = express();
 app.use(express.json());
 app.use(express.json({ limit: "10mb", extended: true }));
@@ -21,36 +19,61 @@ app.use(function (req, res, next) {
 
 app.use(cors());
 
-const anthropic = new Anthropic({
-  apiKey: process.env.CLAUDE_API_KEY,
-});
-
 // add your own api keys
 
 let textData = "";
 
 app.post("/completions", async (req, res) => {
-  if (req.body.service === "ChatGPT") {
+  // if (req.body.service === "ChatGPT") {
+  //   const options = {
+  //     method: "POST",
+  //     headers: {
+  //       Authorization: `Bearer ${API_KEY}`,
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       model: "gpt-3.5-turbo",
+  //       messages: [
+  //         {
+  //           role: "user",
+  //           content: `${req.body.message}`,
+  //         },
+  //       ],
+  //       max_tokens: 500,
+  //     }),
+  //   };
+  //   try {
+  //     const response = await fetch(
+  //       "https://api.openai.com/v1/chat/completions",
+  //       options
+  //     );
+  //     const data = await response.json();
+  //     res.send(data);
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // }
+  if (req.body.service === "Meta-Llama-3-8B-Instruct") {
     const options = {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${API_KEY}`,
+        Authorization: `Bearer ${API_KEY6}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "gpt-3.5-turbo",
+        model: "meta-llama-3-8b-instruct",
         messages: [
           {
             role: "user",
-            content: `${req.body.message}`,
+            content: `${req.body.message}  `,
           },
         ],
-        max_tokens: 500,
+        max_tokens: 1000,
       }),
     };
     try {
       const response = await fetch(
-        "https://api.openai.com/v1/chat/completions",
+        "https://chat.tune.app/api/chat/completions",
         options
       );
       const data = await response.json();
@@ -148,18 +171,6 @@ app.post("/completions", async (req, res) => {
     const data = await response.json();
     res.send(data);
   }
-  if (req.body.service === "Claude") {
-    const message = await anthropic.messages.create({
-      max_tokens: 1024,
-      messages: [{ role: "user", content: req.body.message }],
-      model: "claude-3-opus-20240229",
-    });
-
-    res.status(200).json({
-      success: true,
-      summary: message.content[0].text,
-    });
-  }
 
   if (req.body.service === "openhermes-2-5-m7b-4k") {
     const options = {
@@ -191,32 +202,32 @@ app.post("/completions", async (req, res) => {
     }
   }
 
-  if (req.body.service === "DALL-E") {
-    const options = {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${API_KEY}`,
-        "Content-Type": "application/json",
-        "User-Agent": "Chrome",
-      },
-      body: JSON.stringify({
-        prompt: `${req.body.message} `,
-        n: 1,
-        size: "512x512",
-      }),
-    };
-    try {
-      const response = await fetch(
-        "https://api.openai.com/v1/images/generations",
-        options
-      );
-      const data = await response.json();
-      console.log(data.data[0].url);
-      res.send(data);
-    } catch (err) {
-      console.error(err);
-    }
-  }
+  // if (req.body.service === "DALL-E") {
+  //   const options = {
+  //     method: "POST",
+  //     headers: {
+  //       Authorization: `Bearer ${API_KEY}`,
+  //       "Content-Type": "application/json",
+  //       "User-Agent": "Chrome",
+  //     },
+  //     body: JSON.stringify({
+  //       prompt: `${req.body.message} `,
+  //       n: 1,
+  //       size: "512x512",
+  //     }),
+  //   };
+  //   try {
+  //     const response = await fetch(
+  //       "https://api.openai.com/v1/images/generations",
+  //       options
+  //     );
+  //     const data = await response.json();
+  //     console.log(data.data[0].url);
+  //     res.send(data);
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // }
   if (req.body.service === "stable-diffusion") {
     const options = {
       method: "POST",

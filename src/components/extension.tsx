@@ -23,7 +23,7 @@ const Extension = () => {
   const [text, setText] = useState("");
   const [Chats, setChats] = useState([]);
   const [currentTitle, setCurrentTitle] = useState([]);
-  const [service, setService] = useState("ChatGPT");
+  const [service, setService] = useState("Meta-Llama-3");
   const { speak, cancel, voices } = useSpeechSynthesis();
   const [Image, setImage] = useState("");
   const [Loading, setLoading] = useState(false);
