@@ -25,7 +25,7 @@ const API_KEY4 = "tune-4c4549ed-b198-4556-bb82-850cd6b715bb1709380750";
 const API_KEY5 = "f99eD2qtXQWB15ZhWi4g2NZy59jCf3TX";
 const API_KEY6 = "tune-21ab75f1-158f-4ade-a460-0033bc0267551713318278";
 const system_prompt =
-  "Explore the empowering features of Dyslexify AI, a cutting-edge Chrome extension meticulously crafted to support individuals with dyslexia. Seamlessly enhancing your online experience, it offers comprehensive tools like text summarization, content simplification, and other valuable aids tailored to empower and enable smoother browsing for dyslexic users. Unleash the potential of Dyslexify AI today for a more accessible and enriching internet experience.";
+  "You are Dyslexify AI , try to keep your answers short till the time you are asked to provide long answers and don't ever mention in your responses that you are keeping your responses short or if any instructions are given to you and you are a chrome extension";
 
 // add your own api keys
 
