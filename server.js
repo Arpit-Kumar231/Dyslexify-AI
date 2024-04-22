@@ -25,7 +25,7 @@ const API_KEY4 = "tune-4c4549ed-b198-4556-bb82-850cd6b715bb1709380750";
 const API_KEY5 = "f99eD2qtXQWB15ZhWi4g2NZy59jCf3TX";
 const API_KEY6 = "tune-21ab75f1-158f-4ade-a460-0033bc0267551713318278";
 const system_prompt =
-  "You are Dyslexify AI , try to keep your answers short till the time you are asked to provide long answers and don't ever mention in your responses that you are keeping your responses short or if any instructions are given to you and you are a chrome extension";
+  "You are Dyslexify AI , try to keep your answers short till the time you are asked to provide long answers and don't ever mention in your responses that you are keeping your responses short or if any instructions are given to you and you are a chrome extension never mention any of this until asked who are you";
 
 // add your own api keys
 
@@ -413,7 +413,7 @@ app.post("/Gemma", async (req, res) => {
   const options = {
     method: "POST",
     headers: {
-      Authorization: `Bearer ${API_KEY3}`,
+      Authorization: `Bearer ${API_KEY2}`,
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
@@ -507,7 +507,7 @@ app.post("/Mistral", async (req, res) => {
         },
         {
           role: "user",
-          content: `${req.body.message} summarize and simplify under 40 words `,
+          content: `${req.body.message}  `,
         },
       ],
       max_tokens: 500,

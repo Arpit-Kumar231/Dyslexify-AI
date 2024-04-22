@@ -395,7 +395,7 @@ const Extension = () => {
         {!Loading && (
           <Button
             onClick={cancel}
-            className="rounded-xl ml-[175px] mt-4 bg-background text-foreground hover:border-2 sticky  "
+            className="rounded-xl ml-[175px] mt-4 bg-background text-foreground hover:border-2 sticky hover:bg-black  "
           >
             Stop Voice⛔
           </Button>
@@ -405,7 +405,7 @@ const Extension = () => {
             onClick={() => {
               setQuery(fallBack);
             }}
-            className="rounded-xl ml-[140px] mt-4 bg-background text-foreground hover:border-2 hover:b sticky   mb-2"
+            className="rounded-xl ml-[140px] mt-4 bg-background text-foreground hover:border-2 hover:b sticky   mb-2 hover:bg-black"
           >
             Summarize Current Page
           </Button>
