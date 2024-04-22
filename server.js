@@ -24,6 +24,8 @@ const API_KEY3 = "tune-cf938e0a-fa05-4de6-9255-9431d21056e91709285403";
 const API_KEY4 = "tune-4c4549ed-b198-4556-bb82-850cd6b715bb1709380750";
 const API_KEY5 = "f99eD2qtXQWB15ZhWi4g2NZy59jCf3TX";
 const API_KEY6 = "tune-21ab75f1-158f-4ade-a460-0033bc0267551713318278";
+const system_prompt =
+  "Explore the empowering features of Dyslexify AI, a cutting-edge Chrome extension meticulously crafted to support individuals with dyslexia. Seamlessly enhancing your online experience, it offers comprehensive tools like text summarization, content simplification, and other valuable aids tailored to empower and enable smoother browsing for dyslexic users. Unleash the potential of Dyslexify AI today for a more accessible and enriching internet experience.";
 
 // add your own api keys
 
@@ -283,7 +285,41 @@ let textData = "";
 //     }
 //   }
 // });
-app.post("/Meta-Llama-3-8B-Instruct", async (req, res) => {
+
+app.post("/ChatGPT", async (req, res) => {
+  const options = {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${API_KEY6}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      model: "tune-wizardlm-2-8x22b",
+      messages: [
+        {
+          role: "system",
+          content: system_prompt,
+        },
+        {
+          role: "user",
+          content: `${req.body.message}  `,
+        },
+      ],
+      max_tokens: 1000,
+    }),
+  };
+  try {
+    const response = await fetch(
+      "https://chat.tune.app/api/chat/completions",
+      options
+    );
+    const data = await response.json();
+    res.send(data);
+  } catch (err) {
+    console.error(err);
+  }
+});
+app.post("/Meta-Llama-3", async (req, res) => {
   const options = {
     method: "POST",
     headers: {
@@ -293,6 +329,10 @@ app.post("/Meta-Llama-3-8B-Instruct", async (req, res) => {
     body: JSON.stringify({
       model: "meta-llama-3-8b-instruct",
       messages: [
+        {
+          role: "system",
+          content: system_prompt,
+        },
         {
           role: "user",
           content: `${req.body.message}  `,
@@ -321,6 +361,10 @@ app.post("/Code-Llama", async (req, res) => {
         model: "Phind/Phind-CodeLlama-34B-v2",
         messages: [
           {
+            role: "system",
+            content: system_prompt,
+          },
+          {
             role: "user",
             content: `${req.body.message} `,
           },
@@ -336,35 +380,35 @@ app.post("/Code-Llama", async (req, res) => {
   const data = await response.json();
   res.send(data);
 });
-app.post("/openhermes-2-5-m7b-4k", async (req, res) => {
-  const options = {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${API_KEY4}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      model: "openhermes-2-5-m7b-4k",
-      messages: [
-        {
-          role: "user",
-          content: `${req.body.message}  `,
-        },
-      ],
-      max_tokens: 500,
-    }),
-  };
-  try {
-    const response = await fetch(
-      "https://chat.tune.app/api/chat/completions",
-      options
-    );
-    const data = await response.json();
-    res.send(data);
-  } catch (err) {
-    console.error(err);
-  }
-});
+// app.post("/openhermes-2-5-m7b-4k", async (req, res) => {
+//   const options = {
+//     method: "POST",
+//     headers: {
+//       Authorization: `Bearer ${API_KEY4}`,
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify({
+//       model: "openhermes-2-5-m7b-4k",
+//       messages: [
+//         {
+//           role: "user",
+//           content: `${req.body.message}  `,
+//         },
+//       ],
+//       max_tokens: 500,
+//     }),
+//   };
+//   try {
+//     const response = await fetch(
+//       "https://chat.tune.app/api/chat/completions",
+//       options
+//     );
+//     const data = await response.json();
+//     res.send(data);
+//   } catch (err) {
+//     console.error(err);
+//   }
+// });
 app.post("/Gemma", async (req, res) => {
   const options = {
     method: "POST",
@@ -375,6 +419,10 @@ app.post("/Gemma", async (req, res) => {
     body: JSON.stringify({
       model: "gemma-7b-it",
       messages: [
+        {
+          role: "system",
+          content: system_prompt,
+        },
         {
           role: "user",
           content: `${req.body.message}  `,
@@ -453,6 +501,10 @@ app.post("/Mistral", async (req, res) => {
     body: JSON.stringify({
       model: "mixtral-8x7b-inst-v0-1-32k",
       messages: [
+        {
+          role: "system",
+          content: system_prompt,
+        },
         {
           role: "user",
           content: `${req.body.message} summarize and simplify under 40 words `,

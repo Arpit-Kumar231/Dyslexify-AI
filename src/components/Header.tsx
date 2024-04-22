@@ -26,11 +26,12 @@ const Header = ({ service, setService, type, setType, speak, voices }) => {
           onChange={(e) => setService(e.target.value)}
           className="bg-card text-Hanken text-secondary-foreground font-ABeeZee rounded-xl font-semibold w-[70px]"
         >
-          {/* <option value="ChatGPT">ChatGPT</option> */}
+          <option value="ChatGPT">ChatGPT</option>
+
           <option value="Mistral">Mistral</option>
           <option value="Meta-Llama-3">Meta-Llama-3</option>
           <option value="Gemma">Gemma</option>
-          <option value="openhermes-2-5-m7b-4k">openhermes-2-5-m7b-4k</option>
+          {/* <option value="openhermes-2-5-m7b-4k">openhermes-2-5-m7b-4k</option> */}
           <option value="Code-Llama">Code-Llama</option>
           {/* <option value="Claude">Claude</option> */}
           {/* <option value="DALL-E">DALL-E</option> */}
