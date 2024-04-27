@@ -12,6 +12,12 @@ import { useEffect, useRef, useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Image1 from "../assests/dyslexi.png";
 import { useSpeechSynthesis, useSpeechRecognition } from "react-speech-kit";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 // import SpeechRecognition, {
 //   useSpeechRecognition,
@@ -91,11 +97,11 @@ const Extension = () => {
     fetchData();
 
     // Set up a timer to call fetchData() every 5 seconds
-    const intervalId = setInterval(fetchData, 1000);
+    // const intervalId = setInterval(fetchData, 1000);
 
     // Clear the interval on cleanup to avoid memory leaks and multiple timers
-    return () => clearInterval(intervalId);
-  }, []);
+    // return () => clearInterval(intervalId);
+  }, [window.location.href]);
 
   useEffect(() => {
     const getMessages = async () => {
@@ -441,14 +447,29 @@ const Extension = () => {
                   setText(e.target.value);
                 }}
               />
-              <Button
-                size="icon"
-                variant="secondary"
-                className="w-10 h-10 rounded-full border-primary bg-card hover:border-2"
-                onClick={toggleListening}
-              >
-                <FaMicrophone className="text-card-foreground" />
-              </Button>
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button
+                      size="icon"
+                      variant="secondary"
+                      className="w-10 h-10 rounded-full border-primary bg-card hover:border-2"
+                      // onClick={toggleListening}
+                      onClick={() => {
+                        setQuery(
+                          `Sentence:${text} , fix the grammatical mistakes in this sentence`
+                        );
+                      }}
+                    >
+                      <FaMicrophone className="text-card-foreground" />
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent className="border-none">
+                    <p>Fix Grammatical Errors</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+
               {/* <select
                 value={language}
                 onChange={(e) => setlanguage(e.target.value)}
