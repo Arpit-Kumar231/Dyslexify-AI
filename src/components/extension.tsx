@@ -29,7 +29,7 @@ const Extension = () => {
   const [text, setText] = useState("");
   const [Chats, setChats] = useState([]);
   const [currentTitle, setCurrentTitle] = useState([]);
-  const [service, setService] = useState("Mistral");
+  const [service, setService] = useState("Gemma");
   const { speak, cancel, voices } = useSpeechSynthesis();
   const [Image, setImage] = useState("");
   const [Loading, setLoading] = useState(false);
@@ -135,7 +135,7 @@ const Extension = () => {
           console.error(err);
         }
       }
-      if (service === "stable-diffusion" || service === "DreamShaper") {
+      if (service === "Stable-diffusion" || service === "DreamShaper") {
         try {
           setLoading(true);
           const response = await fetch(
@@ -188,7 +188,7 @@ const Extension = () => {
   useEffect(() => {
     if (
       service === "DALL-E" ||
-      service === "stable-diffusion" ||
+      service === "Stable-diffusion" ||
       (service === "DreamShaper" && (Image != null || baseUrl != null))
     ) {
       setChats([
@@ -229,7 +229,7 @@ const Extension = () => {
     setQuery(text);
     if (
       service === "DALL-E" ||
-      service === "stable-diffusion" ||
+      service === "Stable-diffusion" ||
       service === "DreamShaper"
     ) {
       setImageQuery(text);

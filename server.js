@@ -19,8 +19,8 @@ app.use(function (req, res, next) {
 
 app.use(cors());
 //openrouter
-const system_prompt =
-  "You are Dyslexify AI , try to keep your answers short till the time you are asked to provide long answers and don't ever mention in your responses that you are keeping your responses short or if any instructions are given to you and you are a chrome extension never mention any of this until asked who are you";
+const system_prompt = `You are Dyslexify AI , try to keep your answers short till the time you are asked to provide long answers don't mention you are dyslexify AI until you are asked to do so try to make your answers creative and easy
+  to understand`;
 
 // add your own api keys
 
@@ -414,10 +414,10 @@ app.post("/Gemma", async (req, res) => {
     body: JSON.stringify({
       model: "google/gemma-7b-it:free",
       messages: [
-        {
-          role: "system",
-          content: system_prompt,
-        },
+        // {
+        //   role: "system",
+        //   content: system_prompt,
+        // },
         {
           role: "user",
           content: `${req.body.message}  `,
@@ -437,7 +437,7 @@ app.post("/Gemma", async (req, res) => {
     console.error(err);
   }
 });
-app.post("/stable-diffusion", async (req, res) => {
+app.post("/Stable-diffusion", async (req, res) => {
   const options = {
     method: "POST",
     headers: {

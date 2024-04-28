@@ -2,6 +2,23 @@ import { useEffect, useRef } from "react";
 import Image from "../assests/dyslexi.png";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuRadioItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { DropdownMenuRadioGroup } from "@radix-ui/react-dropdown-menu";
+const modelArray = [
+  "ChatGPT",
+  "Mistral",
+  "Meta-Llama-3",
+  "Gemma",
+  "Code-Llama",
+  "Stable-diffusion",
+  "DreamShaper",
+];
+// const voiceArray = [0, 1, 2, 3, 4, 5, 6];
 
 const Header = ({ service, setService, type, setType, speak, voices }) => {
   const firstUpdate = useRef(true);
@@ -21,23 +38,47 @@ const Header = ({ service, setService, type, setType, speak, voices }) => {
         <h1 className="font-Kelly font-medium text-white text-[24px]">
           Dyslexify Ai
         </h1>
-        <select
-          value={service}
-          onChange={(e) => setService(e.target.value)}
-          className="bg-card text-Hanken text-secondary-foreground font-ABeeZee rounded-xl font-semibold w-[70px]"
-        >
-          <option value="ChatGPT">ChatGPT</option>
+        <DropdownMenu>
+          <DropdownMenuTrigger className="text-foreground border-none text-Hanken mx-2 font-semibold">
+            {service}
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="border-none bg-black">
+            <DropdownMenuRadioGroup
+              value={service}
+              onValueChange={(value) => {
+                setService(value);
+              }}
+            >
+              {modelArray.map((model) => {
+                return (
+                  <DropdownMenuRadioItem
+                    value={model}
+                    className="text-Hanken font-semibold"
+                  >
+                    {model}
+                  </DropdownMenuRadioItem>
+                );
+              })}
+            </DropdownMenuRadioGroup>
+            {/* <select
+              value={service}
+              onChange={(e) => setService(e.target.value)}
+              className="bg-card text-Hanken text-secondary-foreground font-ABeeZee rounded-xl font-semibold w-[70px]"
+            >
+              <option value="ChatGPT">ChatGPT</option>
 
-          <option value="Mistral">Mistral</option>
-          <option value="Meta-Llama-3">Meta-Llama-3</option>
-          <option value="Gemma">Gemma</option>
-          {/* <option value="openhermes-2-5-m7b-4k">openhermes-2-5-m7b-4k</option> */}
-          <option value="Code-Llama">Code-Llama</option>
-          {/* <option value="Claude">Claude</option> */}
-          {/* <option value="DALL-E">DALL-E</option> */}
-          <option value="stable-diffusion">Stable-diffusion</option>
-          <option value="DreamShaper">DreamShaper</option>
-        </select>
+              <option value="Mistral">Mistral</option>
+              <option value="Meta-Llama-3">Meta-Llama-3</option>
+              <option value="Gemma">Gemma</option>
+              {/* <option value="openhermes-2-5-m7b-4k">openhermes-2-5-m7b-4k</option> */}
+            {/* <option value="Code-Llama">Code-Llama</option> */}
+            {/* <option value="Claude">Claude</option> */}
+            {/* <option value="DALL-E">DALL-E</option> */}
+            {/* <option value="stable-diffusion">Stable-diffusion</option>
+              <option value="DreamShaper">DreamShaper</option>
+            </select> */}
+          </DropdownMenuContent>
+        </DropdownMenu>
         <select
           value={type}
           onChange={(e) => setType(e.target.value)}
@@ -51,6 +92,27 @@ const Header = ({ service, setService, type, setType, speak, voices }) => {
           <option value={5}>Voila</option>
           <option value={6}>Samaritan</option>
         </select>
+        {/* <DropdownMenu>
+          <DropdownMenuTrigger className="text-foreground border-none text-Hanken">
+            {type}
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuRadioGroup
+              value={type}
+              onValueChange={(value) => {
+                setType(value);
+              }}
+            >
+              {voiceArray.map((voice) => {
+                return (
+                  <DropdownMenuRadioItem value={voice} className="text-Hanken">
+                    {voice}
+                  </DropdownMenuRadioItem>
+                );
+              })}
+            </DropdownMenuRadioGroup>
+          </DropdownMenuContent>
+        </DropdownMenu> */}
       </div>
       <Avatar>
         <AvatarImage src="https://github.com/shadcn.png" />
