@@ -18,6 +18,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { ALargeSmall } from "lucide-react";
 
 // import SpeechRecognition, {
 //   useSpeechRecognition,
@@ -176,6 +177,11 @@ const Extension = () => {
 
     getMessages();
   }, [Query]);
+
+  // chrome.storage.local.set({ chats: Chats }, () => {
+  //   console.log("Chat is set");
+  // });
+
   useEffect(() => {
     if (message != null) {
       setChats([
@@ -447,28 +453,6 @@ const Extension = () => {
                   setText(e.target.value);
                 }}
               />
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button
-                      size="icon"
-                      variant="secondary"
-                      className="w-10 h-10 rounded-full border-primary bg-card hover:border-2"
-                      // onClick={toggleListening}
-                      onClick={() => {
-                        setQuery(
-                          `Sentence:${text} , fix the grammatical mistakes in this sentence`
-                        );
-                      }}
-                    >
-                      <FaMicrophone className="text-card-foreground" />
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent className="border-none">
-                    <p>Fix Grammatical Errors</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
 
               {/* <select
                 value={language}
@@ -494,6 +478,31 @@ const Extension = () => {
             >
               <IoIosSend className="text-card-foreground" />
             </Button>
+            <TooltipProvider>
+              <Tooltip delayDuration={200}>
+                <TooltipTrigger asChild>
+                  <Button
+                    size="icon"
+                    variant="secondary"
+                    className="w-10 h-10 rounded-full border-primary bg-card hover:border-2"
+                    // onClick={toggleListening}
+                    onClick={() => {
+                      setQuery(
+                        `Sentence:${text} , fix the grammatical mistakes in this sentence`
+                      );
+                    }}
+                  >
+                    <ALargeSmall className="text-card-foreground" />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent className="border-none font-semibold">
+                  <p>
+                    Enter sentence and Click on the Button to fix Grammatical
+                    Errors
+                  </p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           </form>
         </div>
       </div>
