@@ -6,15 +6,25 @@
 
 ### Text to Voice output
 
+### Voice to Text feature
+
 ### Full Webpage summarization
 
 ### Youtube Summarization
 
-### 6 Text Models(GPT-3,Mistral,Gemma,Code-Llama,openhermes,Meta-Llama-3)
+### 6 Text Models(GPT-3,Mistral,Gemma,Code-Llama,Toppy,Meta-Llama-3)
 
 ### 3 Image models(DALL-E,Stable-Diffusion,Dream Shaper)
 
 ### 7 Customisable Voices
+
+## Latest Iterations of the extension with Content Scripts UI
+
+![Screenshot 2024-04-30 153410](https://github.com/Arpit-Kumar231/Dyslexify-AI/assets/142097093/2dbdfdf5-c7da-4c18-9c85-04a8f4949972)
+
+![Screenshot 2024-04-30 153829](https://github.com/Arpit-Kumar231/Dyslexify-AI/assets/142097093/be624ec1-7f4a-44a1-91d4-ceba2ac3b293)
+
+![Screenshot 2024-04-30 154100](https://github.com/Arpit-Kumar231/Dyslexify-AI/assets/142097093/25caeef0-74e6-4ac9-8655-06ca22c421d7)
 
 ## Full Webpage Summarization
 
