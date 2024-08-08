@@ -30,7 +30,7 @@
 ![Screenshot 2024-08-09 005113](https://github.com/user-attachments/assets/7cf2f0ef-e66d-463d-b6c6-9caccb106c5a)
 ![Screenshot 2024-08-09 005040](https://github.com/user-attachments/assets/c5d1508b-9e5d-4f2a-a6e5-23ebf86b233d)
 
-##Old version of the extension
+## Old version of the extension
 
 ![Screenshot 2024-03-19 004842](https://github.com/user-attachments/assets/41bd4f4e-f0a9-41ec-9ad1-a8592449ab8d)
 ![Screenshot 2024-03-19 005159](https://github.com/user-attachments/assets/32addbd1-a409-4b74-b60d-6eb201fe2ae8)
