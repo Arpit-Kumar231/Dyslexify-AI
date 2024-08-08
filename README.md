@@ -1,6 +1,5 @@
 # Dyslexify AI - a Chrome extension for dyslexic people
 
-![WhatsApp Image 2024-03-18 at 10 51 54](https://github.com/Arpit-Kumar231/Dyslexsify/assets/142097093/a86e9326-5f74-453f-a303-b8d08c0787e9)
 
 ## This extension has multiple features :
 
