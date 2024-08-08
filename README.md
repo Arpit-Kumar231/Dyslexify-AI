@@ -26,37 +26,20 @@
 
 ![Screenshot 2024-04-30 154100](https://github.com/Arpit-Kumar231/Dyslexify-AI/assets/142097093/25caeef0-74e6-4ac9-8655-06ca22c421d7)
 
-## Full Webpage Summarization
 
-![WhatsApp Image 2024-03-18 at 10 51 53](https://github.com/Arpit-Kumar231/Dyslexsify/assets/142097093/9c2247fa-d214-43de-9007-3fa7ced876e2)
+![Screenshot 2024-08-09 005113](https://github.com/user-attachments/assets/7cf2f0ef-e66d-463d-b6c6-9caccb106c5a)
+![Screenshot 2024-08-09 005040](https://github.com/user-attachments/assets/c5d1508b-9e5d-4f2a-a6e5-23ebf86b233d)
 
-## Image Models
+##Old version of the extension
 
-![WhatsApp Image 2024-03-18 at 10 51 54](https://github.com/Arpit-Kumar231/Dyslexsify/assets/142097093/3e065576-b562-45b5-8e18-8c14372450b8)
+![Screenshot 2024-03-19 004842](https://github.com/user-attachments/assets/41bd4f4e-f0a9-41ec-9ad1-a8592449ab8d)
+![Screenshot 2024-03-19 005159](https://github.com/user-attachments/assets/32addbd1-a409-4b74-b60d-6eb201fe2ae8)
 
-## Youtube Summarization
 
-![WhatsApp Image 2024-03-18 at 10 55 22](https://github.com/Arpit-Kumar231/Dyslexsify/assets/142097093/c6b5db46-cdce-4a34-ac54-343c90209148)
-
-## Extension with a different theme
-
-![Screenshot 2024-03-18 232411](https://github.com/Arpit-Kumar231/Dyslexsify/assets/142097093/6cc79cf2-45f8-4d20-97d9-ccf2202a4c1d)
-
-## Seven Different voices
-
-![WhatsApp Image 2024-03-18 at 10 55 22(2)](https://github.com/Arpit-Kumar231/Dyslexsify/assets/142097093/83edaadd-3f2f-4cba-8b2e-2a363358daa1)
-
-## Text models
-
-![Screenshot 2024-03-19 004842](https://github.com/Arpit-Kumar231/Dyslexsify/assets/142097093/58970d11-166c-4fe1-b146-329c285e405a)
-
-## Some more images
-
-![Screenshot 2024-03-19 005441](https://github.com/Arpit-Kumar231/Dyslexsify/assets/142097093/105e5a6e-5471-48d0-8c7f-802bdddaf110)
-
-![Screenshot 2024-03-19 005715](https://github.com/Arpit-Kumar231/Dyslexsify/assets/142097093/1d6d5aad-d0c0-4828-91c1-ddc07549e243)
 
 ```
+
+
 
 - Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
 - Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
